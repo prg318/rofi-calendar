@@ -65,8 +65,14 @@ calendar_menu() {
         selected_row="-selected-row $next_month_index"
     fi
 
+    if [ -f $BASEDIR/themes/calendar.rasi ]; then
+        THEMEFILE="$BASEDIR/themes/calendar.rasi"
+    else
+        THEMEFILE="$BASEDIR/share/rofi-calendar/calendar.rasi"
+    fi
+
     echo -e "$calendar_body" | rofi -dmenu \
-    -theme $BASEDIR/themes/calendar.rasi \
+    -theme $THEMEFILE \
     -p "$calendar_header" $urgent $active $selected_row
 }
 
@@ -89,7 +95,7 @@ while [[ true ]]; do
             fi
             ;;
         *)
-    		break
-    	    ;;
+            break
+            ;;
     esac
 done
