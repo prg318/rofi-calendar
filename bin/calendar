@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-DIR=$(dirname $PWD)
+BASEDIR=$(dirname $0)/../
 
 current_day=$(date +"%e")
 current_month=$(date +"%m")
@@ -66,7 +66,7 @@ calendar_menu() {
     fi
 
     echo -e "$calendar_body" | rofi -dmenu \
-    -theme $DIR/themes/calendar.rasi \
+    -theme $BASEDIR/themes/calendar.rasi \
     -p "$calendar_header" $urgent $active $selected_row
 }
 
